@@ -1,5 +1,7 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Nanum_Myeongjo } from "next/font/google";  //imported
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +13,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const nanumMyeongjo = Nanum_Myeongjo({
+  weight: ['400', '700', '800'], // Available weights
+  subsets: ['latin'],            // Or ['latin', 'korean'] if needed
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={nanumMyeongjo.className}
       >
         {children}
       </body>
