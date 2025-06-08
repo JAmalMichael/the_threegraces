@@ -8,8 +8,17 @@ const navItems = ['ART', 'ABOUT', 'VISIT', 'SHOP', 'SEARCH'];
 export default function Home() {
 
   const navRef = useRef<HTMLUListElement>(null);
+  const navRef2 = useRef(null);
 
  useEffect(() => {
+
+      gsap.to(navRef2.current, {
+        y: 0,
+        duration: 1,
+        delay: 5,
+        ease: 'power3.out'
+      });
+
       const items = navRef.current?.querySelectorAll('li');
 
       items?.forEach((item) => {
@@ -43,10 +52,12 @@ export default function Home() {
   return (
     <>
         <nav className="homepage-nav w-full h-fit bg-black flex 
-        justify-center items-center py-5 text-[10px]">
+        justify-center items-center py-5 text-[10px] transform -translate-y-full"
+          ref={navRef2}
+        >
           <ul
            className="flex flex-row gap-6 sm:gap-10 
-        text-white md:text-[12px] font-semibold cursor-pointer text-center"
+        text-white md:text-[12px] font-semibold cursor-pointer text-center "
             ref={navRef}
           >
             {navItems.map((text, index) => (
