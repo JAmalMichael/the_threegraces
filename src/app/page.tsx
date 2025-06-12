@@ -12,6 +12,8 @@ export default function Home() {
 
  useEffect(() => {
 
+
+      //navbar animation logic
       gsap.to(navRef2.current, {
         y: 0,
         duration: 1,
@@ -47,17 +49,22 @@ export default function Home() {
         });
       });
 
+
+      //cursor-ball logic
+      const ball = document.getElementById('cursor-ball');
+
  }, [])
 
   return (
     <>
-        <nav className="homepage-nav w-full h-fit bg-black flex 
+        <nav className="homepage-nav w-full h-fit bg-black flex
         justify-center items-center py-5 text-[10px] transform -translate-y-full"
           ref={navRef2}
         >
           <ul
-           className="flex flex-row gap-6 sm:gap-10 
-        text-white md:text-[12px] font-semibold cursor-pointer text-center "
+           className="flex flex-nowrap md:flex-wrap lg:flex-nowrap justify-center items-center 
+               gap-x-6 md:gap-y-4 sm:gap-x-10 
+               text-white text-[10px] md:text-[12px] font-semibold text-center max-w-[90%]"
             ref={navRef}
           >
             {navItems.map((text, index) => (
@@ -68,7 +75,9 @@ export default function Home() {
               }   
           </ul>
         </nav>
-        <main>
+        <main className="bg-[rgb(5,5,3)] w-full h-screen">
+          <div id="cursor-ball" className=" w-6 h-6 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0 ">
+          </div>
           <div></div>
           <div></div>
           <div></div>
