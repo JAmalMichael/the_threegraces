@@ -53,6 +53,37 @@ export default function Home() {
       //cursor-ball logic
       const ball = document.getElementById('cursor-ball');
 
+      if(!ball) return;
+
+      //handles mouse on entering screen
+        const handleMouseEnter = () => {
+          ball.style.top = '0px';
+        }
+        window.addEventListener('mouseenter', handleMouseEnter);
+      
+        //controls ball movement with cursor
+      const handleMouseMove = (e: MouseEvent) => {
+          const x = e.clientX - ball.offsetWidth / 2;
+          const y = e.clientY - ball.offsetHeight / 2;
+
+          ball.style.transform = `translate(${x}px, ${y}px)`;
+      };
+
+      window.addEventListener('mousemove', handleMouseMove);
+
+      //sends ball back to top of screen
+      const handleMouseLeave = () => {
+        ball.style.top = '-50px'
+      };
+
+      window.addEventListener('mouseleave', handleMouseLeave);
+    
+      return () => {
+        window.removeEventListener('mouseenter', handleMouseEnter);
+        window.removeEventListener('mouseleave', handleMouseLeave);
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
+
  }, [])
 
   return (
