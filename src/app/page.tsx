@@ -107,14 +107,21 @@ export default function Home() {
           </ul>
         </nav>
         <main className="bg-[rgb(5,5,3)] w-full h-screen">
-          <div id="cursor-ball" className=" w-6 h-6 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0 ">
+          <div id="cursor-ball"
+          className=" w-6 h-6 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0 ">
           </div>
           <div></div>
           <div></div>
           <div></div>
           <div></div>
         </main>
-        <footer></footer>
+        <footer>
+          <p 
+          className="text-[#faebd7] bg-[rgb(5,5,3)] flex justify-center items-center text-[7px] py-2 md:py-4">
+            Created By Igbanesi Michael Based on
+             <a href="https://dribbble.com/shots/6767548-The-Three-Graces-Concept" target="_blank"> Tom Bogner Design </a>
+            Design.</p>  
+        </footer>
     </>
     
   )
