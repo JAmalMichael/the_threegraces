@@ -99,7 +99,7 @@ export default function Home() {
             ref={navRef}
           >
             {navItems.map((text, index) => (
-              <li key={index} className="relative w-24 h-10 flex justify-center items-center group ">
+              <li key={index} className="relative w-24 h-10 flex justify-center items-center group cursor-pointer">
                 <span className="block transition-transform ">{text}</span>
               </li>
             ))
@@ -108,7 +108,7 @@ export default function Home() {
         </nav>
         <main className="bg-[rgb(5,5,3)] w-full h-screen">
           <div id="cursor-ball"
-          className=" w-6 h-6 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0 ">
+          className=" w-4 h-4 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0">
           </div>
           <div></div>
           <div></div>
@@ -117,7 +117,7 @@ export default function Home() {
         </main>
         <footer>
           <p 
-          className="text-[#faebd7] bg-[rgb(5,5,3)] flex justify-center items-center text-[7px] py-2 md:py-4">
+            className="text-[#faebd7] bg-[rgb(5,5,3)] flex justify-center items-center text-[7px] py-2 md:py-4">
             Created By Igbanesi Michael Based on
              <a href="https://dribbble.com/shots/6767548-The-Three-Graces-Concept" target="_blank"> Tom Bogner Design </a>
             Design.</p>  
