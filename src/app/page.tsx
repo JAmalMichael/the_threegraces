@@ -1,11 +1,42 @@
 'use client'
 
+import { PerspectiveCamera } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import gsap from "gsap"
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
+import ThreeGraces from "@/components/ThreeGraces";
+import CanvasLoader from "@/components/CanvasLoader";
+import { Leva, useControls } from "leva";
 
 const navItems = ['ART', 'ABOUT', 'VISIT', 'SHOP', 'SEARCH'];
 
 export default function Home() {
+
+  const {positionX, positionY, positionZ } : {
+    positionX : number
+    positionY : number
+    positionZ : number
+  } = useControls('ThreeGraces', {
+      positionX: {value: 2.5, min: -10, max: 10},
+      positionY: {value: 2.5, min: -10, max: 10},
+      positionZ: {value: 2.5, min: -10, max: 10}
+  })
+
+    const {rotationX, rotationY, rotationZ } : {
+    rotationX : number
+    rotationY : number
+    rotationZ : number
+  } = useControls('ThreeGraces', {
+      rotationX: {value: 2.5, min: -10, max: 10},
+      rotationY: {value: 2.5, min: -10, max: 10},
+      rotationZ: {value: 2.5, min: -10, max: 10}
+  })
+
+    const {scale} : {
+    scale : number
+  } = useControls('ThreeGraces', {
+      scale: {value: 2.5, min: -10, max: 10},
+  })
 
   const navRef = useRef<HTMLUListElement>(null);
   const navRef2 = useRef(null);
@@ -13,7 +44,7 @@ export default function Home() {
  useEffect(() => {
 
 
-      //navbar animation logic
+      //navbar slide down animation logic
       gsap.to(navRef2.current, {
         y: 0,
         duration: 1,
@@ -21,6 +52,7 @@ export default function Home() {
         ease: 'power3.out'
       });
 
+      //list element animation
       const items = navRef.current?.querySelectorAll('li');
 
       items?.forEach((item) => {
@@ -106,22 +138,38 @@ export default function Home() {
               }   
           </ul>
         </nav>
-        <main className="bg-[rgb(5,5,3)] w-full h-screen">
+        <main className="w-full h-screen flex flex-col relative">
           <div id="cursor-ball"
           className=" w-4 h-4 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0">
+          </div>
+          <div className="w-full h-full inset-0">
+                  <Leva />
+                <Canvas>
+                  <Suspense fallback={<CanvasLoader />}>
+                  <PerspectiveCamera makeDefault position={[0, 0, 30]}/>
+                    
+                  <ThreeGraces 
+                 // scale={0.09} 
+                  position={[positionX, positionY, positionZ]} 
+                  rotation={[rotationX, rotationY, rotationZ]} 
+                  scale={[scale, scale, scale]}
+                  />
+                  <ambientLight intensity={1}/>
+                  <directionalLight position={[10, 10, 10]} intensity={0.5}/>
+                  </Suspense>
+                </Canvas>
           </div>
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
         </main>
-        <footer>
+        {/* <footer>
           <p 
             className="text-[#faebd7] bg-[rgb(5,5,3)] flex justify-center items-center text-[7px] py-2 md:py-4">
             Created By Igbanesi Michael Based on
              <a href="https://dribbble.com/shots/6767548-The-Three-Graces-Concept" target="_blank"> Tom Bogner Design </a>
             Design.</p>  
-        </footer>
+        </footer> */}
     </>
     
   )
