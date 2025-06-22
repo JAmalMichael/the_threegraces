@@ -7,36 +7,41 @@ import { Suspense, useEffect, useRef } from "react";
 import ThreeGraces from "@/components/ThreeGraces";
 import CanvasLoader from "@/components/CanvasLoader";
 import { Leva, useControls } from "leva";
+import ToogleCamera from "@/components/ToogleCamera";
+import { useMediaQuery } from "react-responsive";
 
 const navItems = ['ART', 'ABOUT', 'VISIT', 'SHOP', 'SEARCH'];
 
 export default function Home() {
 
-  const {positionX, positionY, positionZ } : {
-    positionX : number
-    positionY : number
-    positionZ : number
-  } = useControls('ThreeGraces', {
-      positionX: {value: 2.5, min: -10, max: 10},
-      positionY: {value: 2.5, min: -10, max: 10},
-      positionZ: {value: 2.5, min: -10, max: 10}
-  })
+  const isMobile: boolean = useMediaQuery({ query: '(max-width: 768px)' })
 
-    const {rotationX, rotationY, rotationZ } : {
-    rotationX : number
-    rotationY : number
-    rotationZ : number
-  } = useControls('ThreeGraces', {
-      rotationX: {value: 2.5, min: -10, max: 10},
-      rotationY: {value: 2.5, min: -10, max: 10},
-      rotationZ: {value: 2.5, min: -10, max: 10}
-  })
+  //adding the Leva property
+  // const {positionX, positionY, positionZ } : {
+  //   positionX : number
+  //   positionY : number
+  //   positionZ : number
+  // } = useControls('ThreeGraces', {
+  //     positionX: {value: 2.5, min: -10, max: 10},
+  //     positionY: {value: 2.5, min: -10, max: 10},
+  //     positionZ: {value: 2.5, min: -10, max: 10}
+  // })
 
-    const {scale} : {
-    scale : number
-  } = useControls('ThreeGraces', {
-      scale: {value: 2.5, min: -10, max: 10},
-  })
+  //   const {rotationX, rotationY, rotationZ } : {
+  //   rotationX : number
+  //   rotationY : number
+  //   rotationZ : number
+  // } = useControls('ThreeGraces', {
+  //     rotationX: {value: 2.5, min: -10, max: 10},
+  //     rotationY: {value: 2.5, min: -10, max: 10},
+  //     rotationZ: {value: 2.5, min: -10, max: 10}
+  // })
+
+  //   const {scale} : {
+  //   scale : number
+  // } = useControls('ThreeGraces', {
+  //     scale: {value: 2.5, min: -10, max: 10},
+  // })
 
   const navRef = useRef<HTMLUListElement>(null);
   const navRef2 = useRef(null);
@@ -143,19 +148,21 @@ export default function Home() {
           className=" w-4 h-4 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0">
           </div>
           <div className="w-full h-full inset-0">
-                  <Leva />
+                  {/* <Leva /> */}
                 <Canvas>
                   <Suspense fallback={<CanvasLoader />}>
-                  <PerspectiveCamera makeDefault position={[0, 0, 30]}/>
-                    
+                  <PerspectiveCamera makeDefault position={[1.9,11.7,2.7]} fov={60}/>
+                    <ToogleCamera isMobile={isMobile}>    
                   <ThreeGraces 
                  // scale={0.09} 
-                  position={[positionX, positionY, positionZ]} 
-                  rotation={[rotationX, rotationY, rotationZ]} 
-                  scale={[scale, scale, scale]}
+                  position={[-2.1, -9.7, -7.7]} 
+                  rotation={[-2.9, 2.9, -3.1]} 
+                  scale={[0.2, 0.2, 0.2]}
                   />
+                    </ToogleCamera>
                   <ambientLight intensity={1}/>
-                  <directionalLight position={[10, 10, 10]} intensity={0.5}/>
+                  <directionalLight color={0x435c72} position={[-100,0,-100]} intensity={0.08}/>
+                  <pointLight color={0x88b2d9} position={[30,3,1.8]} intensity={2.7} distance={4} decay={3} />
                   </Suspense>
                 </Canvas>
           </div>
