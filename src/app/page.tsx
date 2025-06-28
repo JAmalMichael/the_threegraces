@@ -9,6 +9,7 @@ import CanvasLoader from "@/components/CanvasLoader";
 import { Leva, useControls } from "leva";
 import ToogleCamera from "@/components/ToogleCamera";
 import { useMediaQuery } from "react-responsive";
+import Spotlights from "@/components/Spotlights";
 
 const navItems = ['ART', 'ABOUT', 'VISIT', 'SHOP', 'SEARCH'];
 
@@ -167,6 +168,7 @@ export default function Home() {
                   color={0x88b2d9} */}
                   </Suspense>
                 </Canvas>
+                <Spotlights />
           </div>
           <div></div>
           <div></div>
