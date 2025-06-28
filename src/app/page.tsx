@@ -151,12 +151,12 @@ export default function Home() {
                   {/* <Leva /> */}
                 <Canvas>
                   <Suspense fallback={<CanvasLoader />}>
-                  <PerspectiveCamera makeDefault position={[1.9,11.7,2.7]} fov={60}/>
+                  <PerspectiveCamera makeDefault position={[1.9, 11.7, 2.7]} fov={40}/>
                     <ToogleCamera isMobile={isMobile}>    
                   <ThreeGraces 
                  // scale={0.09} 
-                  position={[-2.1, -9.7, -7.7]} 
-                  rotation={[-2.9, 2.9, -3.1]} 
+                  position={[-5.5, -15.7, -7.7]} 
+                  rotation={[-2.9, 3.6, -3.1]} 
                   scale={[0.2, 0.2, 0.2]}
                   />
                     </ToogleCamera>
