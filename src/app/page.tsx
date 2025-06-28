@@ -160,9 +160,11 @@ export default function Home() {
                   scale={[0.2, 0.2, 0.2]}
                   />
                     </ToogleCamera>
-                  <ambientLight intensity={1}/>
-                  <directionalLight color={0x435c72} position={[-100,0,-100]} intensity={0.08}/>
-                  <pointLight color={0x88b2d9} position={[30,3,1.8]} intensity={2.7} distance={4} decay={3} />
+                  <ambientLight intensity={0.4}/>
+                  <directionalLight  position={[5,10,15]} intensity={0.5} castShadow/>
+                  <pointLight  position={[-10,5,-5]} intensity={0.5}/>
+                  {/* color={0x435c72}
+                  color={0x88b2d9} */}
                   </Suspense>
                 </Canvas>
           </div>
