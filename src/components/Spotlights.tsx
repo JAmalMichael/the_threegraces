@@ -25,7 +25,7 @@ const Spotlights = () => {
   return (
     <div className='fixed inset-0 z-50 pointer-events-none '> 
         //dark layer
-        <div className='absolute inset-0 bg-black opacity-80'>
+        <div className='absolute inset-0 bg-black opacity-0'>
         </div>
 
         <div
@@ -33,7 +33,7 @@ const Spotlights = () => {
             className='absolute w-72 h-72 pointer-events-none'
             style={{
                 transform: `translate(-50%, -50%)`,
-                background: `radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0.8) 80%)`,
+                // background: `radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0.8) 80%)`,
                 mixBlendMode: `screen`
             }}
         />

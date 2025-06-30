@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hero-text>h1:after {
+    content: "";
+    position: absolute;
+    margin-top: 105px;
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 2px;
+    background: #ffffff70;
+}
+
+.hero-text>p.ended{
+    opacity: 1;
+}

@@ -148,7 +148,7 @@ export default function Home() {
           <div id="cursor-ball"
           className=" w-4 h-4 rounded-full z-50 transition-transform duration-300 pointer-events-none bg-white fixed top-0">
           </div>
-          <div className="w-full h-full inset-0">
+          <div className="hero w-full h-full inset-0">
                   {/* <Leva /> */}
                 <Canvas>
                   <Suspense fallback={<CanvasLoader />}>
@@ -170,7 +170,32 @@ export default function Home() {
                 </Canvas>
                 <Spotlights />
           </div>
-          <div></div>
+          <div 
+          className="hero-text text-white pointer-events-none text-[2em] text-center flex flex-col justify-center
+          items-center absolute h-[120vh] z-10 mx-auto w-[100%]" 
+          style={{
+                  background: 'linear-gradient(0deg, rgba(5,5,5,1) 20%, rgba(5,5,5,0) 50%)'
+          }}
+          >
+                
+                  <h2 className="text-[1em] font-[100] tracking-wide italic m-[35px]">
+                    The
+                  </h2>
+                  <h1 className="my-[10px] font-[100] text-[2em] italics">
+                      THREE GRACES 
+                  </h1>
+                  <p className="text-[13px] mt-[50px] font-light mx-auto sm:w-[700px]
+                  "
+                  style={{
+                    transition: 'all 3.9s ease-in-out',
+                    color: '#c9c9c996'
+                  }}
+                  >
+                    Antonio Canova’s statue The Three Graces is a Neoclassical sculpture, in marble, of the mythological three Charites, daughters of Zeus – identified on some engravings of the statue as, from left to right, Euphrosyne, Aglaea and Thalia – 
+                    who were said to represent youth/beauty (Thalia), mirth (Euphrosyne), and elegance (Aglaea). The Graces presided over banquets and gatherings, to delight the guests of the gods.
+                  </p>
+            
+          </div>
           <div></div>
           <div></div>
         </main>
